@@ -10,6 +10,7 @@ export const Index = (props) => {
   useEffect(() => {
     const data = props && props.data ? props.data.samples : [];
 
+    // data.length && console.log('fullData: ', data);
     setChartData(data);
   }, [props]);
   
@@ -66,12 +67,21 @@ export const Index = (props) => {
 // *** 10 minutes = 600,000 ms
 // *** 5 minutes = 300,000 ms
 // *** 1 minutes = 60,000 ms
-console.log('******************', findMaxAverage(sampleArray, 2));
+// console.log('******************', findMaxAverage(sampleArray, 60));
+
+// const chartSliceData = findMaxAverage(sampleArray, 1200);
+const chartSliceData = findMaxAverage(sampleArray, 4000);
+// console.log('****************** chartData: ', chartData);
+// console.log('****************** chartData start: ', chartSliceData.start);
+// console.log('****************** chartData end: ', chartSliceData.start);
+
+  const focusedChartData = chartData.slice(chartSliceData.start, chartSliceData.end + 1);
+  // console.log('focusedChartData: ', focusedChartData);
 
   return (
-    <div className="index">
+    <div className="index-container">
       <Header />
-      <Chart />
+      <Chart data={focusedChartData} />
       <p>
         -------------
         README

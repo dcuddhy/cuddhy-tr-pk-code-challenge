@@ -1,10 +1,21 @@
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body:before {
+  display: block;
+  width: 100vw;
+  background: #008080;
+  color: white;
+  font-weight: 600;
+  content: "Drew Cuddhy - dcuddhy@gmail.com";
+  padding: 12px;
 }
 
 code {
