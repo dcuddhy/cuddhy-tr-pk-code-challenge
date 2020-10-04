@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Chart } from '../components/chart';
 import { ChartNavigation } from '../components/chartNavigation'
 import { Header } from '../components/header';
+import { OptimalAverage } from '../components/optimalAverage';
 import "./index.css"
 
 export const Index = (props) => {
@@ -62,17 +63,15 @@ export const Index = (props) => {
     };
   }
 
-  console.log(
-    'dataInterval: ', dataInterval 
-  );
   const chartSliceData = findMaxAverage(sampleArray, dataInterval);
   const focusedChartData = chartData.slice(chartSliceData.start, chartSliceData.end + 1);
+  const maxAverage = chartSliceData.maxAverage;
   // console.log('focusedChartData: ', focusedChartData);
-
   return (
     <div className="index-container">
       <Header />
       <Chart data={focusedChartData} />
+      <OptimalAverage type={'Power'} value={maxAverage} />
       <ChartNavigation changeHandler={setDataInterval}/>
       <p>
         ------------- README -------------
@@ -82,10 +81,6 @@ export const Index = (props) => {
           Your application should be well structured and demonstrate what you consider production quality, readable,
           maintainable, and testable software.
         </p>
-
-        <p>
-          Display Power Metric Average
-        </p>  
 
         <p> 
         ## Best Practices
