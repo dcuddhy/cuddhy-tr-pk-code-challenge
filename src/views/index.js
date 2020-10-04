@@ -1,9 +1,64 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Header } from '../components/header';
 import { Chart } from '../components/chart';
 import "./index.css"
 
-export const Index = () => {
+export const Index = (props) => {
+  const [chartData, setChartData] = useState([]);
+  // TODO: Refactor the timing on data fetch and how data is passed here.
+  // We should have the correct data upfront and not rely on useEffect to listen
+  useEffect(() => {
+    const data = props && props.data ? props.data.samples : [];
+
+    setChartData(data);
+  }, [props]);
+  
+  // There had ought to be a simpler way to produce a flat array of values
+  const sampleArray = [];
+  chartData.map((element) => {
+    sampleArray.push(element.values.power);
+  });
+
+  const findMaxAverage = (numbersArray, k) => {
+    let start = 0;
+    let end = 0;
+    let currentMax = 0;
+
+    let safeK = Math.min(k, numbersArray.length);
+    for (var i = 0; i < safeK; i++) {
+      currentMax += numbersArray[i] || 0;
+    }
+
+    let maxSoFar = currentMax;
+
+    for (var j = k; j < numbersArray.length; j++) {
+      currentMax += ((numbersArray[j] || 0) - (numbersArray[j - k] || 0));
+
+      if (currentMax > maxSoFar) {
+        end = j;
+        start = j - k + 1;
+      }
+
+      maxSoFar = Math.max(currentMax, maxSoFar);
+    }
+
+    return {
+        start,
+        end,
+        finalMaxSumSubArray: maxSoFar
+    };
+  }
+
+
+
+// TODO: good for reference but will need to clean up
+// *** 20 minutes = 1,200,000 ms
+// *** 15 minutes = 900,000 ms
+// *** 10 minutes = 600,000 ms
+// *** 5 minutes = 300,000 ms
+// *** 1 minutes = 60,000 ms
+console.log('******************', findMaxAverage(sampleArray, 2));
+
   return (
     <div className="index">
       <Header />
