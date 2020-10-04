@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Header } from '../components/header';
 import { Chart } from '../components/chart';
+import { ChartNavigation } from '../components/chartNavigation'
+import { Header } from '../components/header';
 import "./index.css"
 
 export const Index = (props) => {
   const [chartData, setChartData] = useState([]);
+  const [dataInterval, setDataInterval] = useState(0);
+
   // TODO: Refactor the timing on data fetch and how data is passed here.
   // We should have the correct data upfront and not rely on useEffect to listen
   useEffect(() => {
@@ -22,7 +25,7 @@ export const Index = (props) => {
 
   const findMaxAverage = (numbersArray, k) => {
     let start = 0;
-    let end = 0;
+    let end = numbersArray.length;
     
     if (!numbersArray) {
       return; 
@@ -55,26 +58,14 @@ export const Index = (props) => {
     return {
       start,
       end,
-      finalMaxSumSubArray: maxSoFar
+      maxAverage: maxSoFar / k
     };
   }
 
-
-
-// TODO: good for reference but will need to clean up
-// *** 20 minutes = 1,200,000 ms
-// *** 15 minutes = 900,000 ms
-// *** 10 minutes = 600,000 ms
-// *** 5 minutes = 300,000 ms
-// *** 1 minutes = 60,000 ms
-// console.log('******************', findMaxAverage(sampleArray, 60));
-
-// const chartSliceData = findMaxAverage(sampleArray, 1200);
-const chartSliceData = findMaxAverage(sampleArray, 4000);
-// console.log('****************** chartData: ', chartData);
-// console.log('****************** chartData start: ', chartSliceData.start);
-// console.log('****************** chartData end: ', chartSliceData.start);
-
+  console.log(
+    'dataInterval: ', dataInterval 
+  );
+  const chartSliceData = findMaxAverage(sampleArray, dataInterval);
   const focusedChartData = chartData.slice(chartSliceData.start, chartSliceData.end + 1);
   // console.log('focusedChartData: ', focusedChartData);
 
@@ -82,37 +73,19 @@ const chartSliceData = findMaxAverage(sampleArray, 4000);
     <div className="index-container">
       <Header />
       <Chart data={focusedChartData} />
+      <ChartNavigation changeHandler={setDataInterval}/>
       <p>
-        -------------
-        README
-        -------------
+        ------------- README -------------
       </p>
       <div className="readme">
         <p>
-          Your task is to write a small single page application that loads the data from
-          `workout-data.json`, runs calculations, and displays a chart, and calculation results. Your
-          application should be well structured and demonstrate what you consider production quality, readable,
+          Your application should be well structured and demonstrate what you consider production quality, readable,
           maintainable, and testable software.
         </p>
 
         <p>
-          ## Algorithm
-          - Write a method that finds the best 20 minute power effort, where "best" is defined as
-              highest continuous average for the given time period
-          - Make your algorithm as efficient as possible
-          - Use your method to calculate the 1, 5, 10, 15, and 20 minute best efforts
-          *** 20 minutes = 1,200,000 ms
-          *** 15 minutes = 900,000 ms
-          *** 10 minutes = 600,000 ms
-          *** 10 minutes = 300,000 ms
-          *** 1 minutes = 1,000 ms
+          Display Power Metric Average
         </p>  
-
-        <p>
-          ## User Interface Functionality
-          - Display the power output over time on a chart, using time as the X axis
-          - Display the 1, 5, 10, 15, and 20 minute best effort values
-        </p>
 
         <p> 
         ## Best Practices
