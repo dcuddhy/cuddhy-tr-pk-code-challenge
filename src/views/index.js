@@ -22,15 +22,24 @@ export const Index = (props) => {
   const findMaxAverage = (numbersArray, k) => {
     let start = 0;
     let end = 0;
+    
+    if (!numbersArray) {
+      return; 
+    } else if (numbersArray.length === 1) {
+      return {
+        start,
+        end,
+        finalMaxSumSubArray: numbersArray[0]
+      };
+    }
+    
     let currentMax = 0;
-
     let safeK = Math.min(k, numbersArray.length);
     for (var i = 0; i < safeK; i++) {
       currentMax += numbersArray[i] || 0;
     }
 
     let maxSoFar = currentMax;
-
     for (var j = k; j < numbersArray.length; j++) {
       currentMax += ((numbersArray[j] || 0) - (numbersArray[j - k] || 0));
 
@@ -43,9 +52,9 @@ export const Index = (props) => {
     }
 
     return {
-        start,
-        end,
-        finalMaxSumSubArray: maxSoFar
+      start,
+      end,
+      finalMaxSumSubArray: maxSoFar
     };
   }
 
