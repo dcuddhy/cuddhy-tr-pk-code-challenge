@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Index } from './views/index';
 import './App.css';
 
-// This will need to match wherever your data is being served from.
-const URL = 'http://localhost:3001/workout-data.json';
-
+const URL = process.env.REACT_APP_ENDPOINT;
+console.log('process.env.REACT_APP_ENDPOINTZ: ', process.env.REACT_APP_ENDPOINTZ);
 function App() {
   const [fetchedData, setFetchedData] = useState();
 
