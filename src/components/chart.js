@@ -1,5 +1,5 @@
 import React from 'react';
-import { Area, AreaChart, CartesianGrid, XAxis, YAxis, Tooltip,  } from "recharts"
+import { Area, AreaChart, CartesianGrid, Tooltip, XAxis, YAxis } from "recharts"
 import "./chart.css"
 
 const prettyTime = (milliseconds) => {
@@ -10,13 +10,13 @@ const prettyTime = (milliseconds) => {
 
 export const Chart = (props) => {
   const chartData = props.data;
-  const metric = props.metric;
+  const channel = props.channel;
   const values = [];
 
   chartData.map(item => {
     values.push({
       "name": prettyTime(item.millisecondOffset),
-      [metric]: item.values[metric],
+      [channel]: item.values[channel],
     });
   });
 
@@ -26,7 +26,7 @@ export const Chart = (props) => {
             <AreaChart width={730} height={250} data={values}
             margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
               <defs>
-                <linearGradient id={`color-${metric}`} x1="0" y1="0" x2="0" y2="1">
+                <linearGradient id={`color-${channel}`} x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
                   <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
                 </linearGradient>
@@ -35,10 +35,10 @@ export const Chart = (props) => {
               <YAxis />
               <CartesianGrid strokeDasharray="3 3" />
               <Tooltip />
-              <Area type="monotone" dataKey={`${metric}`} stroke="#8884d8" fillOpacity={1} fill={`url(#color-${metric})`} />
+              <Area type="monotone" dataKey={`${channel}`} stroke="#8884d8" fillOpacity={1} fill={`url(#color-${channel})`} />
             </AreaChart>
           : 
-            <img src="./loading.gif" />
+            <img alt="loading" src="./loading.gif" />
         }
       </div>
   );

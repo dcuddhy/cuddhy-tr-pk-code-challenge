@@ -7,7 +7,7 @@ const URL = 'http://localhost:3001/workout-data.json';
 
 function App() {
   const [fetchedData, setFetchedData] = useState();
-  console.log('fetchedData: ', fetchedData);
+
   useEffect(() => {
     fetch(URL)
     .then(response => response.json())

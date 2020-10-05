@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { ChannelSelection } from '../components/channelSelection';
 import { Chart } from '../components/chart';
 import { ChartNavigation } from '../components/chartNavigation'
 import { Header } from '../components/header';
 import { OptimalAverage } from '../components/optimalAverage';
-import { MetricSelection } from '../components/metricSelection';
 
 import "./index.css"
 
@@ -49,29 +49,33 @@ const findMaxAverage = (numbersArray, k) => {
 export const Index = (props) => {
   const [chartData, setChartData] = useState([]);
   const [dataInterval, setDataInterval] = useState(0);
-  const [metric, setMetric] = useState('power');
+  const [channel, setChannel] = useState('power');
+  const [channelSet, setChannelSet] = useState([]);
+
   useEffect(() => {
     const data = props && props.data ? props.data.samples : [];
+    const channels = props && props.data ? props.data.channelSet : [];
     setChartData(data);
+    setChannelSet(channels);
   }, [props]);
   
   // There had ought to be a simpler way to produce a flat array of values
   const sampleArray = [];
   chartData.map((element) => {
-    sampleArray.push(element.values[metric]);
+    sampleArray.push(element.values[channel]);
   });
 
   const chartSliceData = findMaxAverage(sampleArray, dataInterval);
   const focusedChartData = chartData.slice(chartSliceData.start, chartSliceData.end + 1);
   const maxAverage = chartSliceData.maxAverage;
-
+  // console.log('chartData: ', chartData);
   return (
     <div className="index-container">
       <Header />
-      <MetricSelection changeHandler={setMetric} navigationHandler={setDataInterval}/>
-      <Chart data={focusedChartData} metric={metric} />
-      <OptimalAverage type={metric} value={maxAverage} metric={metric} />
-      <ChartNavigation changeHandler={setDataInterval} metric={metric}/>
+      <ChannelSelection changeHandler={setChannel} navigationHandler={setDataInterval} channels={channelSet} />
+      <Chart data={focusedChartData} channel={channel} />
+      <OptimalAverage type={channel} value={maxAverage} channel={channel} />
+      <ChartNavigation changeHandler={setDataInterval} channel={channel}/>
       <p>
         ------------- README -------------
       </p>
