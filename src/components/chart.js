@@ -3,8 +3,8 @@ import { Area, AreaChart, CartesianGrid, Tooltip, XAxis, YAxis } from "recharts"
 import "./chart.css"
 
 const prettyTime = (milliseconds) => {
-  var minutes = Math.floor(milliseconds / 60000);
-  var seconds = ((milliseconds % 60000) / 1000).toFixed(0);
+  const minutes = Math.floor(milliseconds / 60000);
+  const seconds = ((milliseconds % 60000) / 1000).toFixed(0);
   return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
 }
 
