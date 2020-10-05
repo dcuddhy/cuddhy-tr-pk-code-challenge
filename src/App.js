@@ -17,8 +17,6 @@ function App() {
     });
   }, [])
 
-  console.log('fetchedData : ', fetchedData);
-
   return (
     <div className="App">
       <Index data={fetchedData} />
