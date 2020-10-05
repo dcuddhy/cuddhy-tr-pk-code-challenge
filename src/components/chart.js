@@ -10,26 +10,23 @@ const prettyTime = (milliseconds) => {
 
 export const Chart = (props) => {
   const chartData = props.data;
+  const metric = props.metric;
   const values = [];
 
   chartData.map(item => {
     values.push({
       "name": prettyTime(item.millisecondOffset),
-      "power": item.values.power,
+      [metric]: item.values[metric],
     });
   });
 
   return (
-    <>
-      <h3 className="header">
-        Optimal Power Training
-      </h3>
       <div className="chart-container">
         {values.length > 0 ? 
             <AreaChart width={730} height={250} data={values}
             margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
               <defs>
-                <linearGradient id="colorPower" x1="0" y1="0" x2="0" y2="1">
+                <linearGradient id={`color-${metric}`} x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
                   <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
                 </linearGradient>
@@ -38,12 +35,11 @@ export const Chart = (props) => {
               <YAxis />
               <CartesianGrid strokeDasharray="3 3" />
               <Tooltip />
-              <Area type="monotone" dataKey="power" stroke="#8884d8" fillOpacity={1} fill="url(#colorPower)" />
+              <Area type="monotone" dataKey={`${metric}`} stroke="#8884d8" fillOpacity={1} fill={`url(#color-${metric})`} />
             </AreaChart>
           : 
             <img src="./loading.gif" />
         }
       </div>
-    </>
   );
 }

@@ -3,6 +3,8 @@ import { Chart } from '../components/chart';
 import { ChartNavigation } from '../components/chartNavigation'
 import { Header } from '../components/header';
 import { OptimalAverage } from '../components/optimalAverage';
+import { MetricSelection } from '../components/metricSelection';
+
 import "./index.css"
 
 const findMaxAverage = (numbersArray, k) => {
@@ -47,7 +49,7 @@ const findMaxAverage = (numbersArray, k) => {
 export const Index = (props) => {
   const [chartData, setChartData] = useState([]);
   const [dataInterval, setDataInterval] = useState(0);
-
+  const [metric, setMetric] = useState('power');
   useEffect(() => {
     const data = props && props.data ? props.data.samples : [];
     setChartData(data);
@@ -56,7 +58,7 @@ export const Index = (props) => {
   // There had ought to be a simpler way to produce a flat array of values
   const sampleArray = [];
   chartData.map((element) => {
-    sampleArray.push(element.values.power);
+    sampleArray.push(element.values[metric]);
   });
 
   const chartSliceData = findMaxAverage(sampleArray, dataInterval);
@@ -66,9 +68,10 @@ export const Index = (props) => {
   return (
     <div className="index-container">
       <Header />
-      <Chart data={focusedChartData} />
-      <OptimalAverage type={'Power'} value={maxAverage} />
-      <ChartNavigation changeHandler={setDataInterval}/>
+      <MetricSelection changeHandler={setMetric} navigationHandler={setDataInterval}/>
+      <Chart data={focusedChartData} metric={metric} />
+      <OptimalAverage type={metric} value={maxAverage} metric={metric} />
+      <ChartNavigation changeHandler={setDataInterval} metric={metric}/>
       <p>
         ------------- README -------------
       </p>

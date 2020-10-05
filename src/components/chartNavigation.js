@@ -9,7 +9,7 @@ export const ChartNavigation = (props) => {
   return (
     <>
     <h4 className="chart-navigation">
-      Select interval in <u>minutes</u> to find optimal training sub-session:
+      {`Select interval in minutes to find optimal ${props.metric} training sub-session:`}
     </h4>
       <div>
         <button className="chart-nav-button" value={60} onClick={onIntervalChange}>1</button>
