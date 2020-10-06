@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import styled from "styled-components";
 import { Index } from './views/Index';
-import './App.css';
+
+const AppContainer = styled.div`
+  text-align: center;
+`;
 
 const URL = process.env.REACT_APP_ENDPOINT;
 
@@ -17,9 +21,9 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <AppContainer className="App">
       <Index data={fetchedData} />
-    </div>
+    </AppContainer>
   );
 }
 

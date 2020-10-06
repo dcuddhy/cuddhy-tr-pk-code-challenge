@@ -1,5 +1,13 @@
 import React from 'react';
-import "./ChartNavigation.css"
+import styled from "styled-components";
+
+const NavButton = styled.button`
+  display: inline-flex;
+  margin: 6px;
+  padding: 6px;
+  border-radius: 5px;
+  outline: none;
+`;
 
 export const ChartNavigation = (props) => {
   const onIntervalChange = (e) => {
@@ -12,14 +20,13 @@ export const ChartNavigation = (props) => {
       {`Select interval in minutes to find optimal ${props.channel} training sub-session:`}
     </h4>
       <div>
-        <button className="chart-nav-button" value={60} onClick={onIntervalChange}>1</button>
-        <button className="chart-nav-button" value={300} onClick={onIntervalChange}>5</button>
-        <button className="chart-nav-button" value={600} onClick={onIntervalChange}>10</button>
-        <button className="chart-nav-button" value={900} onClick={onIntervalChange}>15</button>
-        <button className="chart-nav-button" value={1200} onClick={onIntervalChange}>20</button>
-        <button className="chart-nav-button" value={0} onClick={onIntervalChange}>reset</button>
+        <NavButton className="chart-nav-button" value={60} onClick={onIntervalChange}>1</ NavButton>
+        <NavButton className="chart-nav-button" value={300} onClick={onIntervalChange}>5</ NavButton>
+        <NavButton className="chart-nav-button" value={600} onClick={onIntervalChange}>10</ NavButton>
+        <NavButton className="chart-nav-button" value={900} onClick={onIntervalChange}>15</ NavButton>
+        <NavButton className="chart-nav-button" value={1200} onClick={onIntervalChange}>20</ NavButton>
+        <NavButton className="chart-nav-button" value={0} onClick={onIntervalChange}>reset</ NavButton>
       </div>
-    
     </>
   );
 }

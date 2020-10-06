@@ -1,10 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import styled from "styled-components";
 import { ChannelSelection } from '../components/ChannelSelection';
 import { Chart } from '../components/Chart';
 import { ChartNavigation } from '../components/ChartNavigation'
 import { Header } from '../components/Header';
 import { OptimalAverage } from '../components/OptimalAverage';
-import "./Index.css"
+
+const IndexContainer = styled.div`
+  margin: 32px;
+  max-width: 80%;
+  display: inline-flex;
+  flex-direction: column;
+`;
+
+const ReadMe = styled.div`
+  text-align: left;
+`;
 
 const findMaxAverage = (numbersArray, k) => {
   let start = 0;
@@ -64,7 +75,7 @@ export const Index = (props) => {
   const maxAverage = chartSliceData.maxAverage;
 
   return (
-    <div className="index-container">
+    <IndexContainer className="index-container">
       <Header />
       <ChannelSelection changeHandler={setChannelType} navigationHandler={setDataInterval} channels={channelSet} />
       <Chart data={focusedChartData} channel={channelType} />
@@ -73,7 +84,7 @@ export const Index = (props) => {
       <p>
         ------------- README -------------
       </p>
-      <div className="readme">
+      <ReadMe className="readme">
         <p>
           Your application should be well structured and demonstrate what you consider production quality, readable,
           maintainable, and testable software.
@@ -85,7 +96,7 @@ export const Index = (props) => {
         - Rewrite and refactor to use best practices, data structures, functional or OO patterns
         - Refactor to display additional channels such as heart rate and speed
         </p>
-      </div>
-    </div>
+      </ReadMe>
+    </IndexContainer>
   );
 }
