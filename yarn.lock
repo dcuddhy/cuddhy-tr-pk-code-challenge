@@ -3719,7 +3719,7 @@ eslint-config-airbnb-base@^14.2.0:
     object.assign "^4.1.0"
     object.entries "^1.1.2"
 
-eslint-config-airbnb@18.2.0:
+eslint-config-airbnb@^18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/eslint-config-airbnb/-/eslint-config-airbnb-18.2.0.tgz#8a82168713effce8fc08e10896a63f1235499dcd"
   dependencies:
@@ -3780,7 +3780,7 @@ eslint-plugin-import@2.20.1:
     read-pkg-up "^2.0.0"
     resolve "^1.12.0"
 
-eslint-plugin-import@^2.21.2:
+eslint-plugin-import@^2.22.1:
   version "2.22.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.22.1.tgz#0896c7e6a0cf44109a2d97b95903c2bb689d7702"
   dependencies:
@@ -3812,7 +3812,7 @@ eslint-plugin-jsx-a11y@6.2.3:
     has "^1.0.3"
     jsx-ast-utils "^2.2.1"
 
-eslint-plugin-jsx-a11y@^6.3.0:
+eslint-plugin-jsx-a11y@^6.3.1:
   version "6.3.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-jsx-a11y/-/eslint-plugin-jsx-a11y-6.3.1.tgz#99ef7e97f567cc6a5b8dd5ab95a94a67058a2660"
   dependencies:
@@ -3828,13 +3828,13 @@ eslint-plugin-jsx-a11y@^6.3.0:
     jsx-ast-utils "^2.4.1"
     language-tags "^1.0.5"
 
-eslint-plugin-react-hooks@4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.0.0.tgz#81196b990043cde339e25c6662aeebe32ac52d01"
-
 eslint-plugin-react-hooks@^1.6.1:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-1.7.0.tgz#6210b6d5a37205f0b92858f895a4e827020a7d04"
+
+eslint-plugin-react-hooks@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.1.2.tgz#2eb53731d11c95826ef7a7272303eabb5c9a271e"
 
 eslint-plugin-react@7.19.0:
   version "7.19.0"
@@ -3853,7 +3853,7 @@ eslint-plugin-react@7.19.0:
     string.prototype.matchall "^4.0.2"
     xregexp "^4.3.0"
 
-eslint-plugin-react@^7.20.0:
+eslint-plugin-react@^7.21.3:
   version "7.21.3"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.21.3.tgz#71655d2af5155b19285ec929dd2cdc67a4470b52"
   dependencies:

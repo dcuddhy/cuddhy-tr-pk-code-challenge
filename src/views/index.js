@@ -4,8 +4,7 @@ import { Chart } from '../components/Chart';
 import { ChartNavigation } from '../components/ChartNavigation'
 import { Header } from '../components/Header';
 import { OptimalAverage } from '../components/OptimalAverage';
-
-import "./index.css"
+import "./Index.css"
 
 const findMaxAverage = (numbersArray, k) => {
   let start = 0;

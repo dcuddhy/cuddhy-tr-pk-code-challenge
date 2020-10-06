@@ -9,12 +9,12 @@ function App() {
 
   useEffect(() => {
     fetch(URL)
-    .then(response => response.json())
-    .then(json => setFetchedData(json))
-    .catch(error => {
-      console.error('Something has gone wrong with your fetch operation: ', error);
-    });
-  }, [])
+      .then((response) => response.json())
+      .then((json) => setFetchedData(json))
+      .catch((error) => {
+        console.error('Something has gone wrong with your fetch operation: ', error);
+      });
+  }, []);
 
   return (
     <div className="App">
