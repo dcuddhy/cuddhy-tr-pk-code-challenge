@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Index } from './views/index';
+import { Index } from './views/Index';
 import './App.css';
 
 const URL = process.env.REACT_APP_ENDPOINT;
-console.log('process.env.REACT_APP_ENDPOINTZ: ', process.env.REACT_APP_ENDPOINTZ);
+
 function App() {
   const [fetchedData, setFetchedData] = useState();
 

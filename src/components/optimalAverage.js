@@ -1,8 +1,9 @@
 import React from 'react';
-import "./optimalAverage.css"
+import { camelCaseToSpaceCase } from "./Helpers"
+import "./OptimalAverage.css"
 
 export const OptimalAverage = (props) => {
-  const valueType = props.type.charAt(0).toUpperCase() + props.type.slice(1);
+  const valueType = camelCaseToSpaceCase(props.type);
   const value = props.value && props.value.toLocaleString('en', { maximumFractionDigits: 0 });
 
   return (

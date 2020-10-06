@@ -1,5 +1,5 @@
 import React from 'react';
-import "./chartNavigation.css"
+import "./ChartNavigation.css"
 
 export const ChartNavigation = (props) => {
   const onIntervalChange = (e) => {

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { ChannelSelection } from '../components/channelSelection';
-import { Chart } from '../components/chart';
-import { ChartNavigation } from '../components/chartNavigation'
-import { Header } from '../components/header';
-import { OptimalAverage } from '../components/optimalAverage';
+import { ChannelSelection } from '../components/ChannelSelection';
+import { Chart } from '../components/Chart';
+import { ChartNavigation } from '../components/ChartNavigation'
+import { Header } from '../components/Header';
+import { OptimalAverage } from '../components/OptimalAverage';
 
 import "./index.css"
 
@@ -59,12 +59,8 @@ export const Index = (props) => {
     setChannelSet(channels);
   }, [props]);
   
-  const sampleArray = [];
-  chartData.map((element) => {
-    sampleArray.push(element.values[channelType]);
-  });
-
-  const chartSliceData = findMaxAverage(sampleArray, dataInterval);
+  const numbersArray = chartData.map((element) => element.values[channelType]);
+  const chartSliceData = findMaxAverage(numbersArray, dataInterval);
   const focusedChartData = chartData.slice(chartSliceData.start, chartSliceData.end + 1);
   const maxAverage = chartSliceData.maxAverage;
 
