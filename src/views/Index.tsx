@@ -5,6 +5,11 @@ import { Chart } from '../components/Chart';
 import { ChartNavigation } from '../components/ChartNavigation'
 import { Header } from '../components/Header';
 import { OptimalAverage } from '../components/OptimalAverage';
+import { DataProps, InitialDataProps }  from '../Utilities';
+
+interface Props {
+  data?: InitialDataProps;
+}
 
 const IndexContainer = styled.div`
   margin: 32px;
@@ -56,23 +61,27 @@ const findMaxAverage = (numbersArray, k) => {
   };
 }
 
-export const Index = (props) => {
-  const [chartData, setChartData] = useState([]);
+export const Index = (props: Props) => {
+  const [chartData, setChartData] = useState<DataProps[]>([]);
   const [dataInterval, setDataInterval] = useState(0);
   const [channelType, setChannelType] = useState('power');
-  const [channelSet, setChannelSet] = useState([]);
+  const [channelSet, setChannelSet] = useState<string[]>([]);
 
   useEffect(() => {
-    const data = props && props.data ? props.data.samples : [];
+    const data = props && props.data ? props.data.samples  : [];
     const channels = props && props.data ? props.data.channelSet : [];
+
     setChartData(data);
     setChannelSet(channels);
   }, [props]);
   
   const numbersArray = chartData.map((element) => element.values[channelType]);
   const chartSliceData = findMaxAverage(numbersArray, dataInterval);
-  const focusedChartData = chartData.slice(chartSliceData.start, chartSliceData.end + 1);
-  const maxAverage = chartSliceData.maxAverage;
+  const focusedChartData = chartData && chartSliceData ? chartData.slice(chartSliceData.start, chartSliceData.end + 1) : [];
+  const maxAverage = chartSliceData && chartSliceData.maxAverage; 
+  // optional chaining may work with babel
+  // https://github.com/kulshekhar/ts-jest/issues/1283
+  // "@babel/plugin-proposal-optional-chaining": "^7.6.0",
 
   return (
     <IndexContainer className="index-container">

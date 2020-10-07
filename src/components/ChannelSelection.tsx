@@ -1,7 +1,13 @@
 import React from 'react';
 import { camelCaseToSpaceCase } from "./Helpers";
 
-export const ChannelSelection = (props) => {
+interface ChannelProps {
+  changeHandler: (e) => void;
+  channels: string[];
+  navigationHandler: (number) => void;
+}
+
+export const ChannelSelection = (props: ChannelProps) => {
   const onChannelChange = (e) => {
     if (!e.target.value) {
       return;

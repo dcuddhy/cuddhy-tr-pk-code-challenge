@@ -1,7 +1,8 @@
 import React from 'react';
-import styled from "styled-components";
+import styled from 'styled-components';
 import { Area, AreaChart, CartesianGrid, Tooltip, XAxis, YAxis } from "recharts";
-import { prettyTime } from "./Helpers";
+import { prettyTime } from './Helpers';
+import {ChartProps } from '../Utilities';
 
 const ChartContainer = styled.div`
   display: flex;
@@ -9,11 +10,10 @@ const ChartContainer = styled.div`
   height: 250px;
 `;
 
-export const Chart = (props) => {
+export const Chart = (props: ChartProps) => {
   const chartData = props.data;
   const channel = props.channel;
-
-  const values = chartData.map(item => (
+  const values = chartData && chartData.map(item => (
     {
       "name": prettyTime(item.millisecondOffset),
       [channel]: item.values[channel]
@@ -22,7 +22,7 @@ export const Chart = (props) => {
 
   return (
     <ChartContainer className="chart-container">
-      {values.length > 0 ? 
+      {values && values.length > 0 ? 
         <AreaChart width={730} height={250} data={values}
         margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
           <defs>

@@ -1,5 +1,10 @@
 import React from 'react';
-import styled from "styled-components";
+import styled from 'styled-components';
+
+interface NavProps {
+  changeHandler: (e) => void;
+  channel: string;
+}
 
 const NavButton = styled.button`
   display: inline-flex;
@@ -9,7 +14,7 @@ const NavButton = styled.button`
   outline: none;
 `;
 
-export const ChartNavigation = (props) => {
+export const ChartNavigation = (props: NavProps) => {
   const onIntervalChange = (e) => {
     props.changeHandler(e.target.value)
   }
