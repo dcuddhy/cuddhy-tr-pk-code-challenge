@@ -1,9 +1,7 @@
-import installCypressHooks from 'cypressautomocker/include-in-webapp';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Index } from './views/Index';
 import { InitialDataProps } from './Utilities';
-installCypressHooks();
 
 const AppContainer = styled.div`
   text-align: center;

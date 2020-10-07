@@ -18,7 +18,7 @@ export const Chart = (props: ChartProps) => {
       "name": prettyTime(item.millisecondOffset),
       [channel]: item.values[channel]
     }
-  ))
+  ));
 
   return (
     <ChartContainer className="chart-container">

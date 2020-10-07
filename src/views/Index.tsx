@@ -18,10 +18,6 @@ const IndexContainer = styled.div`
   flex-direction: column;
 `;
 
-const ReadMe = styled.div`
-  text-align: left;
-`;
-
 const findMaxAverage = (numbersArray, k) => {
   let start = 0;
   let end = numbersArray.length;
@@ -78,10 +74,7 @@ export const Index = (props: Props) => {
   const numbersArray = chartData.map((element) => element.values[channelType]);
   const chartSliceData = findMaxAverage(numbersArray, dataInterval);
   const focusedChartData = chartData.slice(chartSliceData.start, chartSliceData.end + 1);
-  const maxAverage = chartSliceData?.maxAverage; 
-  // optional chaining may work with babel
-  // https://github.com/kulshekhar/ts-jest/issues/1283
-  // "@babel/plugin-proposal-optional-chaining": "^7.6.0",
+  const maxAverage = chartSliceData.maxAverage;
 
   return (
     <IndexContainer className="index-container">
@@ -90,22 +83,6 @@ export const Index = (props: Props) => {
       <Chart data={focusedChartData} channel={channelType} />
       <OptimalAverage type={channelType} value={maxAverage} />
       <ChartNavigation changeHandler={setDataInterval} channel={channelType} />
-      <p>
-        ------------- README -------------
-      </p>
-      <ReadMe className="readme">
-        <p>
-          Your application should be well structured and demonstrate what you consider production quality, readable,
-          maintainable, and testable software.
-        </p>
-
-        <p> 
-        ## Best Practices
-        - This program was purposely written without best practices in mind
-        - Rewrite and refactor to use best practices, data structures, functional or OO patterns
-        - Refactor to display additional channels such as heart rate and speed
-        </p>
-      </ReadMe>
     </IndexContainer>
   );
 }
