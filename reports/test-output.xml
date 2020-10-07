@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="4.429" tests="1" failures="1">
+  <testsuite name="Root Suite" timestamp="2020-10-07T03:31:23" tests="0" file="cypress/integration/views/index.test.ts" failures="0" time="0">
+  </testsuite>
+  <testsuite name="Path Selection" timestamp="2020-10-07T03:31:23" tests="0" failures="0" time="0">
+  </testsuite>
+  <testsuite name="Do basic things" timestamp="2020-10-07T03:31:23" tests="1" failures="1" time="4.429">
+    <testcase name="Path Selection Do basic things should be screaming fast" time="4.429" classname="should be screaming fast">
+      <failure message="Timed out retrying: Expected to find element: `#id`, but never found it." type="AssertionError"><![CDATA[AssertionError: Timed out retrying: Expected to find element: `#id`, but never found it.
+    at Context.eval (http://127.0.0.1:3001/__cypress/tests?p=cypress/integration/views/index.test.ts:105:27)]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>

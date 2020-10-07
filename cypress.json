@@ -1,0 +1,15 @@
+{
+  "baseUrl": "http://127.0.0.1:3000/",
+  "integrationFolder": "cypress/integration",
+  "reporter": "junit",
+  "retries": {
+    "runMode": 4,
+    "openMode": 0
+  },
+  "viewportWidth": 1920,
+  "viewportHeight": 1080,
+  "reporterOptions": {
+    "mochaFile": "reports/test-output.xml"
+  },
+  "testFiles": "**/*.test.ts"
+}

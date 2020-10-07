@@ -4,7 +4,9 @@
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext"
+      "esnext",
+      "es2020",
+      "es5"
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -19,8 +21,10 @@
     "noEmit": true,
     "jsx": "react",
     "noImplicitAny": false,
+    "types": [ "cypress"]
   },
   "include": [
-    "src"
+    "src",
+    "**/*.ts", "cypress/support/commands.js",
   ]
 }
