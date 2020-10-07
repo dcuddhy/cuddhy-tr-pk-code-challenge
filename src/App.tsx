@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Index } from './views/Index';
-import {InitialDataProps}  from './Utilities';
+import { InitialDataProps } from './Utilities';
 
 const AppContainer = styled.div`
   text-align: center;
@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
     fetch(URL)
       .then((response) => response.json())
-      .then((json) => json && setFetchedData(json || {}))
+      .then((json) => setFetchedData(json))
       .catch((error) => {
         console.error('Something has gone wrong with your fetch operation: ', error);
       });

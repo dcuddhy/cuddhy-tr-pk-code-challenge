@@ -13,7 +13,7 @@ const MessageContainer = styled.div`
 
 export const OptimalAverage = (props: MessageProps) => {
   const valueType = camelCaseToSpaceCase(props.type);
-  const value = props.value && props.value.toLocaleString('en', { maximumFractionDigits: 0 });
+  const value = props.value?.toLocaleString('en', { maximumFractionDigits: 0 });
 
   return (
     <MessageContainer className="optimal-average">

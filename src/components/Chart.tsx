@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Area, AreaChart, CartesianGrid, Tooltip, XAxis, YAxis } from "recharts";
 import { prettyTime } from './Helpers';
-import {ChartProps } from '../Utilities';
+import { ChartProps } from '../Utilities';
 
 const ChartContainer = styled.div`
   display: flex;
@@ -13,7 +13,7 @@ const ChartContainer = styled.div`
 export const Chart = (props: ChartProps) => {
   const chartData = props.data;
   const channel = props.channel;
-  const values = chartData && chartData.map(item => (
+  const values = chartData?.map(item => (
     {
       "name": prettyTime(item.millisecondOffset),
       [channel]: item.values[channel]
