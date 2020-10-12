@@ -21,6 +21,3 @@ export const OptimalAverage = (props: MessageProps) => {
     </MessageContainer>
   );
 }
-  // optional chaining may work with babel
-  // https://github.com/kulshekhar/ts-jest/issues/1283
-  // "@babel/plugin-proposal-optional-chaining": "^7.6.0",
