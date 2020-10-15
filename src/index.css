@@ -10,6 +10,7 @@ body {
 
 body:before {
   display: block;
+  box-sizing: border-box;
   width: 100vw;
   background: #008080;
   color: white;
