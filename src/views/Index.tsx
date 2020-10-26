@@ -20,7 +20,7 @@ const IndexContainer = styled.div`
 
 const findMaxAverage = (numbersArray, k) => {
   let start = 0;
-  let end = numbersArray.length;
+  let end = numbersArray?.length;
   
   if (!numbersArray) {
     return {}; 

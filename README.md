@@ -1,4 +1,13 @@
 # Drew Cuddhy Training Peaks Code Challenge
+
+> Drew Cuddhy <br />
+dcuddhy@gmail.com <br />
+609-408-5891 <br />
+
+<img width="100%" src="https://user-images.githubusercontent.com/8904409/97131715-84cbe980-170a-11eb-8971-ca204b0c58d2.png">
+
+<img width="100%" src="https://user-images.githubusercontent.com/8904409/97131678-62d26700-170a-11eb-9ee6-a9b89f4d8bc0.gif">
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Server

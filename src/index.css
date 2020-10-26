@@ -9,14 +9,14 @@ body {
 }
 
 body:before {
-  display: block;
   box-sizing: border-box;
-  width: 100vw;
+  display: block;
   background: #008080;
+  padding: 12px;
+  width: 100vw;
   color: white;
   font-weight: 600;
-  content: "Drew Cuddhy - dcuddhy@gmail.com";
-  padding: 12px;
+  /* content: "Drew Cuddhy - dcuddhy@gmail.com"; */
 }
 
 code {
